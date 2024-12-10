@@ -59,9 +59,9 @@ resource "aws_security_group" "Jenkins-sg" {
 }
 
 resource "aws_instance" "web" {
-  ami                    = "ami-0df4b2961410d4cff"
+  ami                    = "ami-0e2c8caa4b6378d8c"
   instance_type          = "t2.medium"
-  key_name               = "mumbai-mac"
+  key_name               = "jag-tetris"
   vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
   user_data              = templatefile("./install_jenkins.sh", {})
   iam_instance_profile   = aws_iam_instance_profile.example_profile.name
@@ -71,6 +71,6 @@ resource "aws_instance" "web" {
   }
 
   root_block_device {
-    volume_size = 30
+    volume_size = 20
   }
 }
